@@ -1,0 +1,133 @@
+<title>Contact Us</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+  /* Add your CSS styles here */
+  .container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  .error {
+    color: red;
+    margin-top: 5px;
+  }
+  .social-icons {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  .social-icons li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .social-icons li:last-child {
+    margin-right: 0;
+  }
+  .social-icons a {
+    color: #007bff;
+    font-size: 20px;
+    text-decoration: none;
+  }
+  .social-icons a:hover {
+    color: #0056b3;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Contact Us</h2>
+  <form id="contactForm" action="#" method="POST">
+    <input type="text" id="name" name="name" placeholder="Your Name" required>
+    <div id="nameError" class="error"></div>
+    
+    <input type="email" id="email" name="email" placeholder="Your Email" required>
+    <div id="emailError" class="error"></div>
+
+    <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
+    <div id="messageError" class="error"></div>
+
+    <input type="submit" value="Send Message">
+  </form>
+
+  <ul class="social-icons">
+    <li><a href="#" target="_blank"><i class="fab fa-facebook"></i></a></li>
+    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+    <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+    <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+  </ul>
+</div>
+
+<script>
+  // Form validation
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var message = document.getElementById('message').value;
+    var nameError = document.getElementById('nameError');
+    var emailError = document.getElementById('emailError');
+    var messageError = document.getElementById('messageError');
+    var isValid = true;
+
+    // Reset error messages
+    nameError.innerHTML = '';
+    emailError.innerHTML = '';
+    messageError.innerHTML = '';
+
+    // Name validation
+    if (!name) {
+      nameError.innerHTML = 'Name is required';
+      isValid = false;
+    }
+
+    // Email validation
+    if (!email || !isValidEmail(email)) {
+      emailError.innerHTML = 'Valid email is required';
+      isValid = false;
+    }
+
+    // Message validation
+    if (!message) {
+      messageError.innerHTML = 'Message is required';
+      isValid = false;
+    }
+
+    // Prevent form submission if not valid
+    if (!isValid) {
+      event.preventDefault();
+    }
+  });
+
+  // Email validation function
+  function isValidEmail(email) {
+    var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return pattern.test(email);
+  }
+</script>
+
+</body>
+</html>
